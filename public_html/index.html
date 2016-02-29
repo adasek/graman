@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GraMan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="#">
+
+        <style type="text/css">
+            canvas#collisionMap {
+                display:none;
+            }
+        </style>
+        <script type="text/javascript" src="bower_components/canvg/rgbcolor.js"></script>
+        <script type="text/javascript" src="bower_components/canvg/StackBlur.js"></script>
+        <script type="text/javascript" src="bower_components/canvg/canvg.js"></script>
+
+        <script type="text/javascript" src="class/man.js"></script>
+        <script type="text/javascript" src="class/map.js"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                map = new Map('maps/map1.svg');
+            };
+
+        </script>
+
+    </head>
+    <body>
+        <canvas id="gameArea"></canvas>
+    </body>
+</html>
