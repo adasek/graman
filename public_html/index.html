@@ -7,25 +7,50 @@
         <link rel="icon" href="#">
 
         <style type="text/css">
-            canvas#collisionMap {
-                display:none;
+            html,body {padding:0;margin:0}
+            canvas#gameArea {
+                width:1024px;
+                height:1024px;
+                border:5px solid red;
             }
         </style>
         <script type="text/javascript" src="bower_components/canvg/rgbcolor.js"></script>
         <script type="text/javascript" src="bower_components/canvg/StackBlur.js"></script>
         <script type="text/javascript" src="bower_components/canvg/canvg.js"></script>
 
+        <script type="text/javascript" src="bower_components/pixi/bin/pixi.min.js"></script>
+
         <script type="text/javascript" src="class/man.js"></script>
         <script type="text/javascript" src="class/map.js"></script>
-        <script type="text/javascript">
-            window.onload = function () {
-                map = new Map('maps/map1.svg');
-            };
-
-        </script>
 
     </head>
     <body>
-        <canvas id="gameArea"></canvas>
+        <div id="gameArea"></div>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                map = new Map('maps/map1.svg');
+
+                man = new Man();
+                map.addChild(man);
+                man.x=200;
+                man.y=200;
+                man.width=128;
+                man.height=256;
+                 
+
+                renderer = PIXI.autoDetectRenderer(1024, 1024, {'transparent': true, 'antialias': true}, true);
+
+                if (!document.getElementById("gameArea")) {
+                    throw "Game area not found";
+                }
+
+                document.getElementById("gameArea").appendChild(renderer.view);
+
+                map.scale.set(0.5); //2048 px map to 1024px area
+                renderer.render(map);
+            };
+
+        </script>
     </body>
 </html>

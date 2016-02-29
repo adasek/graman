@@ -3,9 +3,12 @@
  * @license MIT
  */
 
-var Map = function (svgFilename) {
+/* global PIXI */
 
-    /* Load the collision map */
+var Map = function (svgFilename) {
+    PIXI.Container.call(this);
+
+    /* Load and render the collision map */
 
     //todo: use asynchronous loader
     //@see https://github.com/gabelerner/canvg 
@@ -20,9 +23,14 @@ var Map = function (svgFilename) {
 
     this.width = this.canvas.width;
     this.height = this.canvas.height;
+    
 
-
+    this.texture = PIXI.Texture.fromCanvas(this.canvas, PIXI.SCALE_MODES.LINEAR);
+    var spr = new PIXI.Sprite(this.texture);
+    this.addChild(spr);
 };
+
+Map.prototype = Object.create(PIXI.Container.prototype);
 
 /**
  * 

@@ -6,8 +6,10 @@
     ".jshintrc",
     "**/*.txt"
   ],
-  "dependencies": {"canvg-gabelerner": "*",
-    "canvg": "canvg-gabelerner#*"
+  "dependencies": {"pixi": "3.0.10",
+    "canvg-gabelerner": "*",
+    "canvg": "canvg-gabelerner#*",
+    "pixi.js": "pixi#3.0.10"
   },
   "devDependencies": {}
 }
